@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moonsailor | Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Ysabeau+SC&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AstroWeather</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(180deg, #1a0023, #2c003e);
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .weather-app {
+      text-align: center;
+      padding: 30px;
+      border: 2px solid #fff;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      max-width: 90%;
+      width: 400px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 80%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background-color: #e0b3ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c27eff;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="weather-app">
+    <h1>🌤️ AstroWeather</h1>
+    <input type="text" id="cityInput" placeholder="Enter city..." />
+    <button onclick="getWeather()">Get Weather</button>
+    <div class="result" id="weatherResult"></div>
+  </div>
+
+  <script>
+    const apiKey = "be4888e737e52bbf4d042fb0c725db0f";
+
+    function getWeather() {
+      const city = document.getElementById("cityInput").value.trim();
+      const resultDiv = document.getElementById("weatherResult");
+
+      if (!city) {
+        resultDiv.innerHTML = "Please enter a city name.";
+        return;
+      }
+
+      resultDiv.innerHTML = "Loading...";
+
+      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("City not found");
+          }
+          return response.json();
+        })
+        .then(data => {
+          const temp = data.main.temp;
+          const desc = data.weather[0].description;
+          const icon = data.weather[0].icon;
+          const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
+
+          resultDiv.innerHTML = `
+            <p><strong>${city}</strong></p>
+            <img src="${iconUrl}" alt="${desc}" />
+            <p>${temp}°C – ${desc}</p>
+          `;
+        })
+        .catch(error => {
+          resultDiv.innerHTML = "Couldn't fetch weather: " + error.message;
+        });
+    }
+  </script>
+</body>
+</html>
+
+</html>
+
+
+  <a href="#contact" class="glow-button">✨ Contact Me</a>
+
+  <div class="fade-in">
+    <div class="stars">
+      <div class="star" style="top: 10%; left: 20%;"></div>
+      <div class="star" style="top: 30%; left: 70%;"></div>
+      <div class="star" style="top: 50%; left: 40%;"></div>
+      <div class="star" style="top: 80%; left: 80%;"></div>
+    </div>
+
+    <header class="site-header">
+      <h1>🌙 Moonsailor</h1>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="parallax-container">
+      <div class="parallax-layer" id="layer-back"></div>
+      <section id="hero">
+        <img
+  src="moon.png"
+  class="rellax moon"
+  data-rellax-speed="-3"
+  style="position: absolute; top: 20%; left: 10%;"
+  alt="Floating Moon"
+/>
+
+
+
+        <h2 class="typewriter">Dreamy Web Developer</h2>
+        <p>Coding with cosmic love and moonlight magic.</p>
+      </section>
+    </div>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-card">
+        <h3>Moonbeam Gallery</h3>
+        <p>A dreamy art gallery with floating UI and dark mode toggle.</p>
+      </div>
+      <div class="project-card">
+        <h3>AstroWeather</h3>
+        <p>A weather app with moon phase and planetary vibes.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <p>Email: myrtouli94@gmail.com</p>
+    </section>
+
+    <footer>
+      <p>© 2025 Moonsailor</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/rellax@1.12.1/rellax.min.js"></script>
+  <script>
+    const rellax = new Rellax('.rellax');
+  </script>
+</body>
+</html>

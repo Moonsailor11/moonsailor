@@ -1,0 +1,397 @@
+
+/* ==== Reset and Base ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ysabeau SC', serif;
+  background: radial-gradient(ellipse at center, #0d0d1a 0%, #000010 100%);
+  color: #ffffffcc;
+  line-height: 1.6;
+  padding: 1rem;
+  cursor: url('https://cdn.custom-cursor.com/db/21341/32/cute-cosmic-planet-moon-popsicles-pointer.png'), auto;
+}
+
+/* Animated stars background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  z-index: -1;
+  animation: stars 100s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes stars {
+  0% { background-position: 0 0; }
+  100% { background-position: -10000px 5000px; }
+}
+
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ccbbff;
+  animation: shimmerIn 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes shimmerIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    text-shadow: 0 0 15px #bb99ff;
+  }
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #eee0ff;
+  text-shadow: 0 0 8px rgba(204, 153, 255, 0.3);
+}
+
+/* ==== Typewriter effect ==== */
+.typewriter {
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  border-right: 2px solid #ccbbff;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+  font-size: 1.5rem;
+  width: 22ch;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 22ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* ==== Parallax Styles ==== */
+.parallax-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  background: url('https://images.unsplash.com/photo-1549887534-2535aaea0a4d') center / cover no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: -2;
+  transform: translateZ(0);
+  will-change: transform;
+  opacity: 0.3;
+}
+
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+  position: relative;
+  z-index: 2;
+}
+
+
+.floating-moon {
+  position: fixed;
+  top: 20%;
+  left: 10%;
+  width: 80px;
+  z-index: -1;
+  animation: floatMoon 8s ease-in-out infinite;
+}
+
+@keyframes floatMoon {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 2s infinite ease-in-out;
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ==== Sections ==== */
+section {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+/* ==== Project Cards ==== */
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(153, 102, 255, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.02) rotate(0.5deg);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 30px rgba(204, 153, 255, 0.6);
+}
+
+/* ==== Contact and Footer ==== */
+#contact {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.fade-in {
+  animation: fadeInSite 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSite {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: #a991ff;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(169, 145, 255, 0.5);
+}
+
+/* === ADDED: Header + Nav Centering Fix === */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+/* === Center the Hero Section === */
+#hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+  position: relative;
+  z-index: 2;
+}
+
+/* === Transparent Moon Styling === */
+.moon {
+  width: 200px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+  z-index: 1;
+}
+.moon {
+  width: 200px;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+  z-index: 1;
+}
+/* style.css */
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to top, #0b0c2a, #1e215d);
+  font-family: 'Ysabeau SC', sans-serif;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.weather-app {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #f2a1ff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #1e215d;
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body background */
+body {
+  height: 100vh;
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  font-family: 'Ysabeau SC', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Centering wrapper */
+.weather-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Weather card */
+.weather-app {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  color: white;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+/* Title */
+.weather-app h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f5f5ff;
+}
+
+/* Input box */
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Button */
+button {
+  padding: 10px 20px;
+  background-color: #e0aaff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ffffff;
+  color: #1e215d;
+}
+
+/* Result box */
+.result {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.result img {
+  width: 60px;
+  height: 60px;
+}
